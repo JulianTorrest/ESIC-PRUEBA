@@ -304,7 +304,7 @@ def render_chatbot(store_name, provider, model, api_key):
 
     else:
 
-        user_query = st.chat_input("Escribe tu consulta, por ejemplo: 'qu programas de especializacin ofrecen para egresados de marketing?'")
+        user_query = st.chat_input("Escribe tu consulta, por ejemplo: '¿Qué programas de especialización ofrecen para egresados de marketing?'")
 
         if user_query:
 
