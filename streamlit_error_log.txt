@@ -1,0 +1,10 @@
+[2026-09-15T21:50:19.822333] ERROR EN STREAMLIT APP
+UnboundLocalError: local variable 'kpi6' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\betol\OneDrive\Documentos\ESIC JULIAN TORRES\streamlit_app.py", line 933, in <module>
+    main()
+  File "C:\Users\betol\OneDrive\Documentos\ESIC JULIAN TORRES\streamlit_app.py", line 903, in main
+    render_recommender()
+  File "C:\Users\betol\OneDrive\Documentos\ESIC JULIAN TORRES\streamlit_app.py", line 557, in render_recommender
+    kpi6.metric("Tiempo promedio de colocacin", f"{t_avg:.1f} meses")
+UnboundLocalError: local variable 'kpi6' referenced before assignment

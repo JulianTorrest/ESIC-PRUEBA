@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Data generada / logs
+data/
+*.db
+*.log
+
+# Archivos temporales
+*.pdf
+test_*.pdf
+*.png
+test_*.png
+
+# IDEs
+.vscode/
+.idea/
