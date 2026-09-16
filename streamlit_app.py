@@ -308,7 +308,7 @@ def render_chatbot(store_name, provider, model, api_key):
 
         if user_query:
 
-            if not rate_limit_check((st.session_state.session_id), max_calls=100, window_minutes=60):
+            if not rate_limit_check(st.session_state.session_id, max_per_hour=100):
 
                 st.warning("Has alcanzado el lmite de 100 consultas por hora. Intenta más tarde.")
 
