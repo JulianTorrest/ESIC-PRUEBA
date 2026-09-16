@@ -133,11 +133,13 @@ def generar_pdf_propuesta(output_path: str = "propuesta_esic_ia.pdf") -> str:
 
     pdf.chapter_subtitle("1.4 Consideraciones de seguridad y escalabilidad")
     pdf.bullet_list([
-        "Validacion de PII, prompt injection, lenguaje inapropiado y temas permitidos.",
-        "Rate limiting con ventanas deslizantes por sesion e IP.",
-        "Expiracion de sesion por inactividad.",
-        "Sanitizacion de contexto RAG y respuestas.",
-        "Claves en secrets.toml, nunca expuestas en logs.",
+        "Autenticacion con usuario/contraseña y expiracion de sesion por inactividad (15 min).",
+        "Validacion de entrada: deteccion de PII, prompt injection, lenguaje inapropiado y temas permitidos.",
+        "Moderacion externa por API (OpenAI/Mistral) antes de enviar al LLM.",
+        "Rate limiting con control por sesion y maximo de consultas por hora.",
+        "Sanitizacion de contexto RAG y respuestas generadas.",
+        "Claves de API y credenciales en secrets.toml; nunca hardcodeadas ni expuestas en logs.",
+        "Datos sensibles en SQLite local; logs, trazas y feedback aislados en observabilidad FinOps.",
         "Arquitectura modular: cada escenario puede escalarse o reemplazarse de forma independiente."
     ])
 

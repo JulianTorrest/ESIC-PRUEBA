@@ -89,17 +89,24 @@ graph TD
     },
     "ciberseguridad": {
         "titulo": "Arquitectura de Ciberseguridad",
-        "descripcion": "Gestión de credenciales, control de acceso y buenas prácticas.",
+        "descripcion": "Capas de seguridad del agente: autenticación, validación de entrada, detección de PII, moderación externa, rate limiting, expiración de sesión, sanitización y gestión segura de secretos.",
         "mermaid_code": """
-graph LR
-    A[Usuario] -->|Ingresa clave| B[.streamlit/secrets.toml]
-    B --> C[Streamlit Cloud / Local]
-    C --> D[OpenAI API]
-    C --> E[Mistral API]
-    C --> F[Groq API]
-    G[Claves] -->|Nunca hardcodeadas| H[Código fuente]
-    I[Datos sensibles] --> J[SQLite local]
-    J --> K[No versionar secrets]
+graph TD
+    A[Usuario] -->|Usuario + contraseña| B[Autenticación]
+    B --> C[Expiración de sesión 15 min]
+    A --> D[Consulta]
+    D --> E[Validación de entrada]
+    E -->|Detección PII| F[PII Patterns]
+    E -->|Prompt injection| G[Inyección de prompts]
+    E -->|Lenguaje inapropiado| H[Filtro de groserías]
+    E -->|Moderación externa| I[OpenAI/Mistral Moderation]
+    I -->|Segura| J[LLM]
+    J --> K[Sanitización de respuesta]
+    K --> L[Usuario]
+    M[Rate limiting] --> N[Consultas por hora]
+    O[Secrets.toml] -->|Claves API| P[OpenAI / Mistral / Groq]
+    Q[Datos sensibles] --> R[SQLite local encriptada]
+    S[Logs y trazas] --> T[Observabilidad FinOps]
         """.strip(),
     },
     "integraciones": {
